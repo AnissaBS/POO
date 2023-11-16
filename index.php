@@ -1,14 +1,17 @@
 <?php
-include('Eleve.php');
-include('EleveFille.class.php');
+include('personne.php');
+include('agriculteur.php');
+include('boulanger.php');
+include('infirmier.php');
 
-$eleveN1 = new Eleve();
-$eleveN2 = new EleveFille();
+$pers1 = new agriculteur('Dupire', 'Alain', 38);
+echo $pers1->dormir(). '<br/>';
 
-$eleveN1->setPrenom('Alain');
-$eleveN2->setPrenom('juline');
-$eleveN2->setAge(22);
+$pers2 = new boulanger('Tighzoui', 'Mahmoud', 19);
+echo $pers2->dormir(). '<br/>';
 
-echo $eleveN1->getPrenom(). '<br/>';
-echo $eleveN2->getPrenom(). ' qui a' .$eleveN2->getAge(),'ans';
+
+$pers3 = new infirmier('Dos Santos', 'Fatima', 54);
+echo $pers3->dormir(). '<br/>';
+
 ?>
