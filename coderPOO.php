@@ -232,4 +232,96 @@
         echo $eleveN1->getPrenom(). '<br/>';
         echo $eleveN1->getPrenom(). 'qui a' .$eleveN2->getAge(),'ans';
 
+    /*
+
+    
+    . Le constructeur
+
+    Le constructeur est ce ue l'on appelle en POO : une méthode magique. Son principe est de créer des valeurs par défaut au moment de la création d'un nouvel objet. Le constructeur est donc une méthode. Afin de le différencier d'une méthode dite classique, le constructeur sera déclaré ainsi :
+        function __construct()
+    Il possèdera deux caractères underscores et sera suivi d'un mot clé construct.
+
+        -- La création
+    Nous allons reprendre le fichier Eleve.php en remettant sa propriété $_prenom en visibilité privée, car nous n'allons pas utiliser de classe fille afin de ne pas compexifier l'explication.
+    */
+        class Eleve{
+            private $_prenom;
+            public function setPrenom($prenom){
+                $this->_prenom=$prenom;
+            }
+            public function getPrenom(){
+                return $this->_prenom;
+            }
+        }
+    
+    /*
+    Nous souhaitons enrichir notre classe Eleve en récupérant de manière automatique la dat d'inscription d'un nouvel élève au moiment de sa décclaration lors de l'appel de ntre classe Eleve grâce au mot clé nex.
+        public function __construt(){
+            $this->dateInstruction = date('d/m/Y);
+        }
+    Nb : notre construteur a été déclaré en visibilité publique afin de pouvoir être invoqué de n'importe quel endroit de notre site.
+    Nous définissons l'objet courant grâce à la variable $this, en lui affectant la date au moment de l'inscription.
+    */
+        class Eleve2{
+            private $_prenom;
+
+            // Constructeur
+            public function __construct(){
+                $this->dateInscription = date('d/m/Y');
+            }
+
+            public function setPrenom($prenom){
+                $this->_prenom=$prenom;
+            }
+            public function getPrenom(){
+                return $this->_prenom;
+            }
+        }
+
+    /*
+    Nous allons à présent créer un nouvel élève puis nous irons récupérer sa date d'inscription qui aura été créée de manière automatique par le constructeur.
+
+    <?php
+    $eleve1 = new Eleve;
+    $eleve1->setPrenom('Pierre');
+    echo $eleve1->getPrenom().'<br />;
+    echo 'Cet élève a été inscrit le '.$eleve1->dateInscription;
+    ?>
+
+    CONCLUSION
+    Nous venons de créer une méthode constructeur qui nous permet de pouvoir obtenir des valeurs au moment de la création d'un nouvel objet.
+
+    . Les constantes
+
+        -- Principe d'une constante --
+        Une constante de classe sera toujjours attachèe à la classe. Elle ne sera accessibnle qu'en lecture et donc ne pourra enancun cas être madifiable, ni d'lintérieur ni de l'extérieur de la classe.
+
+        Un constante se définie à l'aide du mot clé const et suivie de son nom écrit en majuscule.
+
+        -- Création d'une constante --
+        Nous allons prendre le fichier Eleve.php dans l'état suivant afin  de ne pas complexifier l'explication du fonctionnement de la constante.
+    */
+            class Eleve2{
+                private $_prenom;
+
+                public function setPrenom($prenom){
+                    $this->_prenom=$prenom;
+                }
+                public function getPrenom(){
+                    return $this->_prenom;
+                }
+            
+            }
+
+    /*
+        Nous souhaitons définir une constante à notre classe. Un élément statique, invariable et qui sera toujours ainsi.
+        La constante que nous voulons créer sera la chaîne de caractères suivante :     Elève de notre école.
+
+        Syntaxe : const ECOLE = 'Elève de notre école.';
+
+            Nb : Par défaut, une constante est toujours publique. On ne précise donc pas sa visibilité.
+                Egalement, une constante est dite statique(static). Pour récupérer sa valeur, nous utiliserons les caractères :: (double deux points).
+                Nous avons créer le fichier constante pour illustrer ci-dessus.
+    */
+    
 ?>
